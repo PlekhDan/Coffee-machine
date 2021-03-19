@@ -35,7 +35,8 @@ if (btn != undefined) {
         }
     }
     if (nextYandexPage) {
-        document.getElementByClassName("pager__item_kind_next")[0].click();
+        let next = document.getElementsByClassName("pager__item_kind_next")[0];
         console.log("click");
+        next.click();
     }
 }
