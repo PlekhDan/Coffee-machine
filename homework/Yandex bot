@@ -49,7 +49,7 @@ if (btn != undefined) {
 } else if (location.hostname == "yandex.ru") {
     site = getCookie("site");
     let nextYandexPage = true;
-    let currentYandexPage = document.getElementsByClassName("pager__item_current_yes")[0];
+
     for (let i = 0; i < links.length; i++) {
         let link = links[i];
         if (link.href.indexOf(site) != -1) {
@@ -59,14 +59,15 @@ if (btn != undefined) {
             break;
         }
     }
-    if (nextYandexPage && currentYandexPage < 11) {
-        setTimeout(() => {
+    setTimeout(() => {
+        let currentYandexPage = document.getElementsByClassName("pager__item_current_yes")[0].innerText;
+        if (nextYandexPage && currentYandexPage < 10) {
             let next = document.getElementsByClassName("pager__item_kind_next")[0];
             next.click();
-        }, 1500);
-    } else if (currentYandexPage == 11) {
-        location.href = "https://yandex.ru/";
-    }
+        } else if (currentYandexPage == 10) {
+            location.href = "https://yandex.ru/";
+        }
+    }, 2000);
 // Мы на искомом сайте из выборки.
 } else {
     setInterval(() => {
